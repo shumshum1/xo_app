@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/player1_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player 1 Name:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/player1_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Player 1 Name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/player2_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player 2 Name:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/player2_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Player 2 Name"
+        android:inputType="text"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/next_screen_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT SCREEN"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
