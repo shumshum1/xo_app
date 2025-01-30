@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         BTNnext = findViewById(R.id.next_screen_button);
         BTNrealTime = findViewById(R.id.btRealTimegame); // אתחול נכון של הכפתור
 
+
+
+        ///github
         // מעבר למסך משחק עם שמות שחקנים
         BTNnext.setOnClickListener(new View.OnClickListener() {
             @Override
