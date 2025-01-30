@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ///github
+
         // מעבר למסך משחק עם שמות שחקנים
         BTNnext.setOnClickListener(new View.OnClickListener() {
             @Override
