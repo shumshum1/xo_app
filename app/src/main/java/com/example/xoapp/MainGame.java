@@ -1,9 +1,11 @@
 package com.example.xoapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,13 +28,26 @@ public class MainGame extends AppCompatActivity {
     private int player1 = 1;
     private int player2 = 2;
     private int counter = 0;
+    private GameSummaryDatabaseHelper gameSummaryDatabaseHelper;
     private GameSummary gameSummary;
-
+    private DBHelper dbHelper;
+    private Button btNext;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_game);
+        btNext = findViewById(R.id.btNext);
+        btNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainGame.this,SummaryActivity.class);
+                startActivity(intent);
+            }
+        });
+        gameSummaryDatabaseHelper = new GameSummaryDatabaseHelper(this);
+        dbHelper = new DBHelper(this);
         zeroArr(board);
         Intent intent = getIntent();
         String name1 = intent.getStringExtra("NAME1");
@@ -78,6 +93,7 @@ public class MainGame extends AppCompatActivity {
                             winnerTextTextView.setText("winner is "+ name1);
                             gameSummary.setWinner(name1);
                             gameSummary.setTime(player1TimeTextView.getText().toString());
+                            dbHelper.addGameSummary(gameSummary);
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -88,11 +104,16 @@ public class MainGame extends AppCompatActivity {
                         }
                     }
                     else {
+
                         board[finalI][finalJ]=2;
                         startUpdatingTime(player1TimeTextView,true);
                         startUpdatingTime(player2TimeTextView,false);
                         if (checkLine(board)){
                             winnerTextTextView.setText("winner is "+ name2);
+                            gameSummary.setWinner(name2);
+                            gameSummary.setTime(player1TimeTextView.getText().toString());
+                            dbHelper.addGameSummary(gameSummary);
+                            gameSummaryDatabaseHelper.addGameSummary(gameSummary);
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -106,6 +127,9 @@ public class MainGame extends AppCompatActivity {
                     setScreen(buttons,board);
                     if (counter==9){
                         winnerTextTextView.setText("draw");
+                        gameSummary.setWinner("draw");
+                        gameSummary.setTime("00:00");
+                        dbHelper.addGameSummary(gameSummary);
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {

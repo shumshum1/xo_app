@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "497233102972",
+    "project_id": "xo-app-f11ea",
+    "storage_bucket": "xo-app-f11ea.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497233102972:android:465f58cf4a10d28a9a21f9",
+        "android_client_info": {
+          "package_name": "com.example.xoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCzufSfzkT74ZCuG26zoSJeH5IF-KO-fE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
